@@ -7,7 +7,7 @@ function getRequestValuesFromHttpFunctionEvent ({ event }) {
   const method = context.method
   const urlObject = new url.URL(context.url)
   const path = urlObject.pathname + urlObject.search
-  const headers = { cookies: context.headers.cookie }
+  const headers = { cookies: context.headers.cookie ?? [] }
 
   Object.entries(context.headers).forEach(([headerKey, headerValue]) => {
     headers[headerKey.toLowerCase()] = headerValue
